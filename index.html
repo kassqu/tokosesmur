@@ -80,7 +80,6 @@
 
     /* CSS CETAK STRUK THERMAL */
     @media print {
-      /* 1. Sembunyikan semua elemen di layar kecuali yang mau dicetak */
       body * { 
         visibility: hidden; 
       }
@@ -91,7 +90,6 @@
         padding: 0 !important; 
       }
 
-      /* 2. Targetkan khusus area struk saja biar muncul (baik dari tombol Cetak atau CMD+P) */
       #print-invoice, #print-invoice *, #print-clone, #print-clone * {
         visibility: visible;
       }

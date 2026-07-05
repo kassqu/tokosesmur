@@ -263,15 +263,6 @@
 
         if (!inputPin) return showAlert({ icon: 'warning', title: 'Perhatian', text: 'Masukkan PIN!' });
 
-        // Bypass untuk preview lokal jika tidak ada user
-        if(!users || users.length === 0) {
-            if(inputPin === '1234') {
-                return onLogin(role);
-            } else {
-                return alert("Untuk mode preview/demo, gunakan PIN: 1234");
-            }
-        }
-
         if (users && users.length > 0) {
           const matchedUser = users.find(u => 
             String(u.pin).trim() === inputPin && 

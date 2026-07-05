@@ -140,7 +140,7 @@
       const [users, setUsers] = useState([]); 
       
       const [storeConfig, setStoreConfig] = useState({ 
-        name: 'Toko Berkah Usaha', 
+        name: 'Nama Toko', 
         address: 'Alamat Toko', 
         phone: '0812345678', 
         footer: 'Terima Kasih',
@@ -262,7 +262,6 @@
         const selectedRole = role.toLowerCase();
 
         if (!inputPin) return showAlert({ icon: 'warning', title: 'Perhatian', text: 'Masukkan PIN!' });
-
         if (users && users.length > 0) {
           const matchedUser = users.find(u => 
             String(u.pin).trim() === inputPin && 
@@ -295,7 +294,7 @@
               </div>
             )}
             <h1 className="text-3xl font-black text-slate-800 tracking-tight mb-1">{storeConfig?.name || 'kassqu'}</h1>
-            <p className="text-slate-500 text-sm mb-8">Pilih akses & masukkan PIN (Demo: 1234)</p>
+            <p className="text-slate-500 text-sm mb-8">Pilih Akses & Masukkan PIN</p>
 
             <form onSubmit={handleLogin} className="space-y-6">
               <div className="flex bg-slate-100 p-1.5 rounded-2xl border-2 border-white">

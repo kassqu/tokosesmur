@@ -80,9 +80,9 @@
 
     /* CSS CETAK STRUK THERMAL */
     @media print {
-      /* 1. Sembunyikan seluruh UI web, sisakan cuma kertas putih */
-      #root, .no-print { 
-        display: none !important; 
+      /* 1. Sembunyikan semua elemen di layar kecuali yang mau dicetak */
+      body * { 
+        visibility: hidden; 
       }
       
       body { 
@@ -91,21 +91,27 @@
         padding: 0 !important; 
       }
 
-      /* 2. Target ID struk hasil clone biar memenuhi layar */
-      #print-clone {
-        display: block !important;
-        position: static !important;
+      /* 2. Targetkan khusus area struk saja biar muncul (baik dari tombol Cetak atau CMD+P) */
+      #print-invoice, #print-invoice *, #print-clone, #print-clone * {
+        visibility: visible;
+      }
+
+      #print-invoice, #print-clone {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 !important; 
-        padding: 0 !important; 
+        /* REVISI: Tambahan padding atas 20px supaya logo & header gak kepotong di printer/Safari */
+        padding: 20px 5px 0px 5px !important; 
         border: none !important; 
         border-radius: 0 !important;
         box-shadow: none !important;
         overflow: visible !important;
       }
       
-      #print-clone * { 
+      #print-invoice *, #print-clone * { 
         color: black !important; 
         background: transparent !important;
       }
@@ -840,7 +846,8 @@
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 mt-auto shrink-0">
+                {/* REVISI: Tambahkan class "no-print" di div pembungkus tombol ini */}
+                <div className="grid grid-cols-2 gap-2 mt-auto shrink-0 no-print">
                   <button onClick={handlePrint} className="bg-indigo-600 text-white py-2.5 rounded-xl font-bold flex justify-center items-center gap-2 text-sm hover:bg-indigo-700 transition">
                     <Icon name="print" className="text-[18px]"/> Cetak
                   </button>
